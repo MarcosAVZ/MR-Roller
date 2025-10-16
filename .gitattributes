@@ -1,0 +1,18 @@
+# Texto por defecto: normalizar a LF en el repo
+* text=auto eol=lf
+
+# Archivos que sí deben ir en CRLF en Windows (scripts de shell Windows)
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# Binarios (no tocar finales de línea)
+*.png -text
+*.jpg -text
+*.jpeg -text
+*.gif -text
+*.pdf -text
+*.ico -text
+*.woff -text
+*.woff2 -text
+*.ttf -text
