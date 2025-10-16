@@ -1,0 +1,22 @@
+# Node (cliente y server)
+node_modules/
+Client/node_modules/
+server/node_modules/
+dist/
+build/
+coverage/
+*.log
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.env
+.env.*.local
+
+# Vite/React típicos
+Client/dist/
+Client/.vite/
+
+# IDE/OS
+.vscode/
+.DS_Store
+Thumbs.db

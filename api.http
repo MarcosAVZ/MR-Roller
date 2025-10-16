@@ -1,0 +1,40 @@
+### Recuperar todas las cortinas
+GET http://localhost:1234/cortinas
+
+### Recuperar una cortina por ID
+
+GET http://localhost:1234/cortinas/2
+
+### Recuperar todas las cortinas por categoría
+GET http://localhost:1234/cortinas?tipo=BlackOut
+
+### Crear una nueva cortina
+POST http://localhost:1234/cortinas
+Content-Type: application/json
+
+{
+  "Nombre": "Cortina de Seda",
+  "Tipo": "Blackout",
+  "Precio": 5000.0,
+  "Descripcion": "Cortina de seda premiumss",
+  "Altura": 200,
+  "Ancho": 150,
+  "Telas": [{ "ID": 4, "Nombre": "Tela Seda Roja", "Imagen": "seda_azul.jpg" }],
+  "Imagenes": [{ "ID": 5, "Nombre": "Vista frontal", "SRC": "cortina_seda_1.jpg" }],
+  "Categorias": [{ "ID": 6, "Nombre": "Dormitorio", "Descripcion": "Cortinas para habitaciones" }]
+}
+
+
+
+### Actualizar una cortina por ID
+PATCH http://localhost:1234/cortinas/6c1424e7-f5c0-4c19-8eef-95853c9fa8fc
+Content-Type: application/json
+
+{
+  "Precio": 700.0
+}
+
+
+### Eliminar una cortina por ID3
+DELETE http://localhost:1234/cortinasDelete/1
+
