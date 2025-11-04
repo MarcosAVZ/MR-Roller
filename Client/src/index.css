@@ -24,7 +24,6 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
@@ -52,6 +51,17 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+/* Estilos globales para inputs */
+input, select, textarea {
+  color: #495057 !important;
+  background-color: white !important;
+  font-family: inherit;
+}
+
+input::placeholder, textarea::placeholder {
+  color: #adb5bd !important;
 }
 
 @media (prefers-color-scheme: light) {
