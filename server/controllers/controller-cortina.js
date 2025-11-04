@@ -38,16 +38,21 @@ export class CortinaController {
 
   create = async (req, res) => {
     try {
+      // si llega multipart con archivos, req.files existe
+      // si llega JSON, no habrá req.files
       const result = validateCortina(req.body)
       if (!result.success) {
         return res.status(400).json({ errors: result.error.issues })
       }
 
-      const nuevaCortina = await this.CortinaModel.create(result.data)
-      return res.status(201).json(nuevaCortina)
+      const nueva = await this.CortinaModel.create(
+        { ...result.data, imagenes: req.body?.imagenes }, // URLs opcionales
+        { files: req.files || [], publicBaseUrl: process.env.PUBLIC_BASE_URL }
+      )
+
+      return res.status(201).json(nueva)
     } catch (e) {
-      console.error('create Cortina error:', e)
-      return res.status(500).json({ error: 'Error en el servidor', detail: e.message })
+      return res.status(500).json({ message: 'Error creando cortina', detail: e.message })
     }
   }
 

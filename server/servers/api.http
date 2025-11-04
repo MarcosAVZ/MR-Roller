@@ -1,0 +1,2 @@
+GET http://localhost:1234/cortinas/2f096aef-ac2a-11f0-b624-fc3497c0eee9/imagenes
+Accept: application/json

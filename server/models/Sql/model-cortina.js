@@ -1,18 +1,18 @@
 // CortinaModel.js (ESM)
 import { pool } from '../Conexion/Sql.js'
 
-// Mapea columnas SQL -> shape anterior (propiedades con mayúscula)
+// Mapea columnas SQL -> propiedades en minúsculas para el cliente
 const mapRow = (r) => ({
-  ID: r.id,
-  Nombre: r.nombre,
-  Tipo: r.tipo,
-  Precio: r.precio,
-  Descripcion: r.descripcion,
-  Altura: r.altura,
-  Ancho: r.ancho,
-  Stock: r.stock,
-  CreatedAt: r.created_at,
-  UpdatedAt: r.updated_at
+  id: r.id,
+  nombre: r.nombre,
+  tipo: r.tipo,
+  precio: r.precio,
+  descripcion: r.descripcion,
+  altura: r.altura,
+  ancho: r.ancho,
+  stock: r.stock,
+  create_at: r.created_at,
+  update_at: r.updated_at
 })
 
 // Campos permitidos para INSERT/UPDATE

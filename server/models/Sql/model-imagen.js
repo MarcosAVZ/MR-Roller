@@ -72,7 +72,7 @@ export class ImagenModel {
   }
 
   static async update ({ id, input = {}, file = null }) {
-    const PUBLIC_BASE_URL = process.env.PUBLIC_BASE_URL || 'http://localhost:1234'
+    const PUBLIC_BASE_URL = process.env.PUBLIC_BASE_URL || 'http://localhost:5173'
     if (!id) return null
 
     // filtrar campos permitidos del payload
@@ -124,23 +124,5 @@ export class ImagenModel {
       [String(id)]
     )
     return res.affectedRows > 0
-  }
-
-  static async getByCortinaId ({ cortinaId }) {
-    const [rows] = await pool.query(
-      `
-      SELECT
-        i.id,
-        i.nombre,
-        i.src
-      FROM imagen i
-      JOIN cortina_imagen ci
-        ON ci.id_imagen = i.id
-      WHERE ci.id_cortina = ?
-      ORDER BY i.nombre ASC
-      `,
-      [String(cortinaId)]
-    )
-    return rows.map(mapRow)
   }
 }
