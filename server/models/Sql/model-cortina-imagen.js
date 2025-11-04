@@ -42,13 +42,17 @@ export class CortinaImagenModel {
   }
 
   // Desvincular una imagen de una cortina
-  static async delete ({ cortinaId, imagenId }) {
-    if (!cortinaId || !imagenId) return false
-    const [res] = await pool.execute(
-      'DELETE FROM cortina_imagen WHERE id_cortina = ? AND id_imagen = ?',
-      [String(cortinaId), String(imagenId)]
-    )
-    return res.affectedRows > 0
+  static async delete ({ cortinaId, imagenId, connection } = {}) {
+    const conn = connection ?? await pool.getConnection()
+    try {
+      const [result] = await conn.query(
+        'DELETE FROM cortina_imagen WHERE ID_Cortina = ? AND ID_Imagen = ?',
+        [cortinaId, imagenId]
+      )
+      return result.affectedRows > 0
+    } finally {
+      if (!connection) conn.release()
+    }
   }
 
   // (Opcional) Listar imágenes vinculadas — útil si querés centralizar acá también

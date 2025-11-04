@@ -20,3 +20,7 @@ Client/.vite/
 .vscode/
 .DS_Store
 Thumbs.db
+
+# Archivos de subida
+server/public/uploads/
+Client/public/uploads/

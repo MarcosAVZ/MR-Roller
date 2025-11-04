@@ -69,6 +69,13 @@ export async function post(endpoint, data) {
   })
 }
 
+export async function patch(endpoint, data) {
+  return apiRequest(endpoint, {
+    method: 'PATCH',
+    body: JSON.stringify(data),
+  })
+}
+
 /**
  * Realizar petición PUT
  * @param {string} endpoint - Endpoint de la API
@@ -127,6 +134,7 @@ export default {
   get,
   post,
   put,
+  patch,
   delete: del,
   uploadFile,
 }
