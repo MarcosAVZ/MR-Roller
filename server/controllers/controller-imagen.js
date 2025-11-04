@@ -28,19 +28,6 @@ export class ImagenController {
     }
   }
 
-  getByCortinaId = async (req, res) => {
-    try {
-      const { cortinaId } = req.params
-      if (!cortinaId) return res.status(400).json({ error: 'Falta el parámetro cortinaId' })
-
-      const imagenes = await this.ImagenModel.getByCortinaId({ cortinaId })
-      return res.status(200).json(imagenes)
-    } catch (error) {
-      console.error(error)
-      return res.status(500).send('<h1>Error en el servidor</h1>')
-    }
-  }
-
   create = async (req, res) => {
     try {
       const nuevaImagen = await this.ImagenModel.create({

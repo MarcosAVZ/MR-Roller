@@ -9,8 +9,6 @@ export const CreateImagenRouter = ({ imagenModel }) => {
 
   imagenesRouter.get('/', imagenController.getAll)
   imagenesRouter.get('/:id', imagenController.getById)
-  imagenesRouter.get('/cortina/:cortinaId', imagenController.getByCortinaId)
-
   imagenesRouter.post('/', upload.single('file'), imagenController.create)
   imagenesRouter.patch('/:id', upload.single('file'), imagenController.update)
   imagenesRouter.delete('/:id', imagenController.delete)

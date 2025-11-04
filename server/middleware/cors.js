@@ -1,8 +1,8 @@
 import cors from 'cors'
 
 const ACCEPTED_ORIGINS = [
-  'http://localhost:5173',
-  'http://localhost:1234',
+  'http://localhost:5173', // Cliente Vite
+  'http://localhost:1234', // Servidor
   'https://movies.com',
   'https://midu.dev'
 ]
