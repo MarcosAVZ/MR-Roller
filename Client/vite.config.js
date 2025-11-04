@@ -1,17 +1,38 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// https://vite.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [react()],
-  server: {
-    port: 5173,
-    proxy: {
-      '/cortinas': 'http://localhost:1234',
-      '/imagenes': 'http://localhost:1234',
-      '/categorias': 'http://localhost:1234',
-      '/telas': 'http://localhost:1234',
-      '/uploads': 'http://localhost:1234'
-    }
-  }
-})
+  server: mode === 'development'
+    ? {
+        port: 5173,
+        proxy: {
+          '/api/cortinas': {
+            target: 'http://localhost:1234',
+            changeOrigin: true,
+            rewrite: (path) => path.replace(/^\/api/, '')
+          },
+          '/api/imagenes': {
+            target: 'http://localhost:1234',
+            changeOrigin: true,
+            rewrite: (path) => path.replace(/^\/api/, '')
+          },
+          '/api/categorias': {
+            target: 'http://localhost:1234',
+            changeOrigin: true,
+            rewrite: (path) => path.replace(/^\/api/, '')
+          },
+          '/api/telas': {
+            target: 'http://localhost:1234',
+            changeOrigin: true,
+            rewrite: (path) => path.replace(/^\/api/, '')
+          },
+          '/api/uploads': {
+            target: 'http://localhost:1234',
+            changeOrigin: true,
+            rewrite: (path) => path.replace(/^\/api/, '')
+          }
+        }
+      }
+    : undefined
+}))
